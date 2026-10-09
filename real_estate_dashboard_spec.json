@@ -1,0 +1,651 @@
+{
+  "project": {
+    "name": "EstateFlow",
+    "productType": "real-estate engagement and management platform",
+    "objective": "Recreate both supplied dashboard references as functional, faithful, responsive web interfaces while replacing sample content with real-estate engagement data.",
+    "buildStack": {
+      "frontend": "React 18+ with TypeScript",
+      "setup": "Vite or Next.js App Router",
+      "styles": "Tailwind CSS plus custom CSS where needed for precise spacing",
+      "charts": "Recharts",
+      "icons": "lucide-react",
+      "animations": "CSS transitions; Framer Motion optional",
+      "data": "typed local mock data first, replaceable by APIs"
+    },
+    "brand": {
+      "displayName": "EstateFlow",
+      "note": "Replace with actual brand name and logo when provided."
+    },
+    "defaultRoute": "/dashboard/aurex",
+    "routes": [
+      "/dashboard/aurex",
+      "/dashboard/raseltate"
+    ],
+    "currency": "INR"
+  },
+  "referenceRules": {
+    "sourceReferences": [
+      "Image 1: Aurex Living",
+      "Image 2: Raseltate/Real Estate Management"
+    ],
+    "screenshotsAreLayoutReferencesNotProductionBackgrounds": true,
+    "sourcePreviewPixels": {
+      "width": 736,
+      "height": 552
+    },
+    "target": "Close visual fidelity to each reference at desktop width; keep typography readable rather than literally using screenshot-size text.",
+    "preserve": [
+      "overall composition",
+      "relative placement and scale of building images",
+      "negative space",
+      "soft monochromatic palette",
+      "rounded cards",
+      "minimal linework",
+      "pill navigation",
+      "compact KPI microvisualizations",
+      "tiny table rows",
+      "subtle visual hierarchy"
+    ],
+    "doNot": [
+      "display whole reference screenshot as one image",
+      "mix both reference layouts on the same route",
+      "invent replacement buildings",
+      "use unsupplied stock property images",
+      "add unrelated gradients",
+      "change card hierarchy",
+      "add thick borders",
+      "use giant typography",
+      "use default blue dashboard UI"
+    ]
+  },
+  "assetSystem": {
+    "sourceDirectory": "public/assets",
+    "alternateIfProjectUsesSrcAssets": "src/assets",
+    "scanRecursively": true,
+    "extensions": [
+      ".png",
+      ".jpg",
+      ".jpeg",
+      ".webp",
+      ".avif",
+      ".svg"
+    ],
+    "manifestFile": "src/data/assetManifest.ts",
+    "discovery": "Inspect every available image and map them by subject/appearance, not by guessed filenames. Import resolved real file paths through Vite import.meta.glob or explicit imports.",
+    "roles": {
+      "aurexLargeBuilding": "wide clean modern villa/building photo, used as top-right hero",
+      "aurexPropertyCard1": "exterior residential property photo",
+      "aurexPropertyCard2": "facade or contemporary home photo",
+      "aurexPropertyCard3": "interior living room photo",
+      "aurexTableThumbnail1": "small property exterior thumbnail",
+      "aurexTableThumbnail2": "second property exterior thumbnail",
+      "raseltateLargeBuilding": "wide modern multi-storey white/grey home with landscape; preserve silhouette",
+      "avatarImages": "optional supplied agent/person portraits",
+      "mapImage": "optional supplied small local map thumbnail",
+      "logo": "provided logo if present; otherwise neutral typography only"
+    },
+    "mapping": {
+      "aurexLargeBuilding": null,
+      "aurexPropertyCard1": null,
+      "aurexPropertyCard2": null,
+      "aurexPropertyCard3": null,
+      "aurexTableThumbnail1": null,
+      "aurexTableThumbnail2": null,
+      "raseltateLargeBuilding": null,
+      "avatarImages": [],
+      "mapImage": null,
+      "logo": null
+    },
+    "rules": [
+      "Never assume exact filenames until the directory has been inspected.",
+      "Use image object-fit: cover for listing thumbnail/card photographs.",
+      "Use object-fit: contain for main exterior building silhouettes when transparent PNGs are provided.",
+      "For hero photos without transparency, use image clipping/masking with a matching background rather than recoloring or distorting them.",
+      "If an asset is missing, show a restrained neutral placeholder and report which role is unresolved.",
+      "Always preserve source image aspect ratios and never stretch or mirror a building just to fit."
+    ]
+  },
+  "designTokens": {
+    "shared": {
+      "fontFamily": "Inter, Manrope, or provided brand font",
+      "fontWeights": [
+        400,
+        500,
+        600,
+        700
+      ],
+      "borderRadius": {
+        "shell": "24px",
+        "card": "16px",
+        "pill": "9999px",
+        "thumbnail": "12px"
+      },
+      "shadow": "0 10px 35px rgba(0,0,0,0.025)",
+      "border": "1px solid rgba(25,25,25,0.035)",
+      "transitions": "160ms ease",
+      "spacingUnit": "4px",
+      "iconLibrary": "Lucide icons at 15–18px stroke 1.6"
+    },
+    "aurex": {
+      "pageBackground": "#F6F4F5",
+      "dashboardBackground": "#E9E6E7",
+      "cardBackground": "#F6F4F5",
+      "innerBackground": "#EEEAEA",
+      "textPrimary": "#191919",
+      "textSecondary": "#818082",
+      "divider": "#E5E1E2",
+      "blackAccent": "#111111",
+      "orangeAccent": "#E6B884",
+      "statusActive": "#E0F3D8",
+      "statusPending": "#FBE3C8",
+      "heroBlend": "#E9E6E7"
+    },
+    "raseltate": {
+      "pageBackground": "#ADADAD",
+      "dashboardBackground": "#DEDEDE",
+      "cardBackground": "#E9E9E9",
+      "innerBackground": "#E4E4E4",
+      "textPrimary": "#202020",
+      "textSecondary": "#868686",
+      "divider": "#D4D4D4",
+      "ctaAccent": "#FF543D",
+      "chartAccent": "#CC833E",
+      "gaugeAccent": "#DA8D45",
+      "success": "#4F8D5A",
+      "heroBlend": "#DEDEDE"
+    }
+  },
+  "screens": [
+    {
+      "id": "aurex",
+      "route": "/dashboard/aurex",
+      "layoutName": "Aurex-inspired property and engagement dashboard",
+      "referenceApproxBoundsAt736x552": {
+        "shell": [
+          46,
+          46,
+          648,
+          461
+        ],
+        "navigation": [
+          66,
+          61,
+          608,
+          42
+        ],
+        "topKpis": [
+          67,
+          135,
+          287,
+          64
+        ],
+        "heroBuilding": [
+          362,
+          108,
+          300,
+          100
+        ],
+        "midCards": [
+          65,
+          210,
+          291,
+          185
+        ],
+        "propertyGallery": [
+          362,
+          211,
+          312,
+          183
+        ],
+        "bottomTable": [
+          64,
+          400,
+          457,
+          106
+        ],
+        "map": [
+          524,
+          400,
+          151,
+          107
+        ]
+      },
+      "desktop": {
+        "viewport": "1440px and above",
+        "shellMaxWidth": "1320px",
+        "shellPadding": "30px",
+        "contentColumns": 12,
+        "contentGap": "12px",
+        "firstRowHeight": "196px",
+        "secondRowHeight": "360px",
+        "thirdRowHeight": "220px",
+        "mainGridAreas": [
+          "hero-stats occupies columns 1–6, hero-building columns 7–12",
+          "mini-kpis columns 1–3, value-chart columns 4–6, property-gallery columns 7–12",
+          "properties-table columns 1–9, map columns 10–12"
+        ]
+      },
+      "regions": [
+        {
+          "id": "navigation",
+          "position": "full top",
+          "features": [
+            "brand symbol + EstateFlow",
+            "Dashboard selected black pill",
+            "Listings light pill",
+            "Appointments light pill",
+            "Messages light pill",
+            "right aligned search, bell, settings, avatar"
+          ],
+          "heightPx": 56
+        },
+        {
+          "id": "heroStats",
+          "position": "left/top",
+          "features": [
+            {
+              "label": "Properties Sold",
+              "value": "₹2.76 Cr",
+              "visual": "thick black horizontal progress bar"
+            },
+            {
+              "label": "Properties Rented",
+              "value": "₹34.6 L",
+              "visual": "short apricot progress bar with light grey hatched continuation"
+            }
+          ]
+        },
+        {
+          "id": "heroBuilding",
+          "position": "right/top",
+          "assetRole": "aurexLargeBuilding",
+          "render": "large architectural image blending into background with controlled object-position, no image frame"
+        },
+        {
+          "id": "revenueCard",
+          "position": "left/mid/top",
+          "label": "Total Revenue",
+          "value": "₹8.73 Cr",
+          "subtitle": "This month",
+          "visual": "tiny barcode sparkline lower-right",
+          "action": "arrow-up-right"
+        },
+        {
+          "id": "dealsCard",
+          "position": "left/mid/bottom",
+          "label": "Completed Deals",
+          "value": "1,269",
+          "subtitle": "This month",
+          "visual": "thin sparkline lower-right",
+          "action": "arrow-up-right"
+        },
+        {
+          "id": "salesChart",
+          "position": "center/mid",
+          "label": "Average Deal Value",
+          "value": "₹87.3 L",
+          "filter": "Daily",
+          "visual": "horizontal black bars with varying lengths, small metric labels and white background"
+        },
+        {
+          "id": "propertyGallery",
+          "position": "right/mid",
+          "label": "Featured Properties",
+          "visual": "3 narrow property image cards with photo, title, price, metadata, heart and diagonal arrow icons",
+          "assetRoles": [
+            "aurexPropertyCard1",
+            "aurexPropertyCard2",
+            "aurexPropertyCard3"
+          ]
+        },
+        {
+          "id": "propertyTable",
+          "position": "left/bottom",
+          "filterPills": [
+            "District",
+            "Type",
+            "Status",
+            "Cost"
+          ],
+          "search": true,
+          "columns": [
+            "Property",
+            "Type",
+            "Agent",
+            "Cost",
+            "Views",
+            "Status",
+            "Action"
+          ],
+          "thumbnails": true,
+          "statusStyle": "tiny colored pill"
+        },
+        {
+          "id": "map",
+          "position": "right/bottom",
+          "label": "Map",
+          "visual": "muted street-map view with one black pin and yellow cluster badge",
+          "assetRole": "mapImage"
+        }
+      ],
+      "textScale": {
+        "nav": "12px",
+        "sectionHeading": "13px",
+        "kpiLabel": "11px",
+        "kpiNumber": "27px",
+        "tableHeader": "10px",
+        "tableCell": "10–11px"
+      },
+      "interactions": [
+        "navbar route selection",
+        "property-card hover reveals small controls",
+        "heart saves property",
+        "arrow opens property details drawer",
+        "filter chips update table",
+        "search queries property/address/agent",
+        "table row opens property details",
+        "map selection highlights corresponding property",
+        "Daily dropdown changes chart range"
+      ]
+    },
+    {
+      "id": "raseltate",
+      "route": "/dashboard/raseltate",
+      "layoutName": "Raseltate-inspired engagement command center",
+      "referenceApproxBoundsAt736x552": {
+        "shell": [
+          20,
+          49,
+          696,
+          456
+        ],
+        "navigation": [
+          35,
+          55,
+          666,
+          39
+        ],
+        "welcome": [
+          36,
+          107,
+          265,
+          55
+        ],
+        "heroBuilding": [
+          345,
+          100,
+          352,
+          158
+        ],
+        "quickActions": [
+          32,
+          233,
+          282,
+          28
+        ],
+        "metricPills": [
+          32,
+          267,
+          671,
+          44
+        ],
+        "riskCard": [
+          32,
+          317,
+          152,
+          179
+        ],
+        "performanceCard": [
+          189,
+          317,
+          157,
+          179
+        ],
+        "activityTable": [
+          349,
+          317,
+          353,
+          179
+        ]
+      },
+      "desktop": {
+        "viewport": "1440px and above",
+        "shellMaxWidth": "1392px",
+        "shellPadding": "28px",
+        "topHeroHeight": "332px",
+        "metricsRowHeight": "88px",
+        "lowerRowMinHeight": "340px",
+        "lowerGrid": "3fr 3fr 7fr",
+        "contentGap": "12px"
+      },
+      "regions": [
+        {
+          "id": "navigation",
+          "position": "full top",
+          "features": [
+            "logo and EstateFlow",
+            "selected coral circular dashboard icon",
+            "6 muted outline icon-only navigation links",
+            "right search, notifications, recent activity, small avatar and compact user info"
+          ],
+          "heightPx": 48
+        },
+        {
+          "id": "welcome",
+          "position": "left/top",
+          "breadcrumbs": "Main Menu / Dashboard",
+          "heading": "Real estate engagement",
+          "subtitle": "A smart dashboard providing performance metrics and portfolio monitoring."
+        },
+        {
+          "id": "heroBuilding",
+          "position": "center and right/top",
+          "assetRole": "raseltateLargeBuilding",
+          "render": "very large low-saturation architectural property photograph on grey matching background, scaled across hero, image touches metrics baseline"
+        },
+        {
+          "id": "actionToolbar",
+          "position": "left/lower hero",
+          "primaryCta": "+ Add New",
+          "secondaryActions": [
+            "refresh",
+            "more"
+          ],
+          "avatarStack": "five circular overlapping agent portraits when present",
+          "settings": "small control icon"
+        },
+        {
+          "id": "metricPills",
+          "position": "full row",
+          "data": [
+            {
+              "value": "24",
+              "label": "PROPERTIES",
+              "description": "Portfolio tracking and listing performance"
+            },
+            {
+              "value": "18",
+              "label": "AGENTS",
+              "description": "Agent activity and response monitoring"
+            },
+            {
+              "value": "32",
+              "label": "DEALS",
+              "description": "Closed transactions and deal outcomes"
+            }
+          ],
+          "style": "wide soft-grey rounded pill cards with stroked circular number on left and thin small descriptor"
+        },
+        {
+          "id": "riskOverview",
+          "position": "left/bottom",
+          "heading": "Lead Health Overview",
+          "visual": "semi-circular thin amber segmented gauge above large central score",
+          "value": "74%",
+          "supportingStats": [
+            "Response rate",
+            "Engagement score",
+            "Conversion"
+          ]
+        },
+        {
+          "id": "portfolioPerformance",
+          "position": "center/bottom",
+          "heading": "Engagement Performance",
+          "topMetrics": [
+            "9.4% Avg Conversion",
+            "4.1% Visit Rate",
+            "417 Active Leads"
+          ],
+          "visual": "thin vertical amber bars monthly, faint baseline, label Jan through Aug"
+        },
+        {
+          "id": "recentActivity",
+          "position": "right/bottom",
+          "heading": "Recent Activity",
+          "columns": [
+            "Date",
+            "Activity Type",
+            "Description",
+            "Status"
+          ],
+          "rows": 7,
+          "examples": [
+            "New Property Enquiry",
+            "Site Visit Scheduled",
+            "Follow-up Reminder",
+            "Proposal Viewed",
+            "Deal Confirmed",
+            "Agent Assigned"
+          ]
+        }
+      ],
+      "textScale": {
+        "breadcrumb": "11px",
+        "heading": "27px",
+        "subtitle": "12px",
+        "metricNumber": "23px",
+        "metricLabel": "10px",
+        "table": "10–11px"
+      },
+      "interactions": [
+        "Add New opens creation dropdown for lead/property/site visit/task",
+        "icon nav switches modules",
+        "refresh reloads demo data state",
+        "metrics select corresponding filtered lists",
+        "gauge segments tooltip",
+        "performance chart timeframe selection",
+        "activity rows open related lead/property drawer"
+      ]
+    }
+  ],
+  "domainModel": {
+    "menu": [
+      "Dashboard",
+      "Properties",
+      "Leads",
+      "Enquiries",
+      "Site Visits",
+      "Follow-ups",
+      "Conversations",
+      "Agents",
+      "Deals",
+      "Reports",
+      "Settings"
+    ],
+    "leadStages": [
+      "New Enquiry",
+      "Contacted",
+      "Qualified",
+      "Site Visit Booked",
+      "Visited",
+      "Negotiation",
+      "Won",
+      "Lost"
+    ],
+    "entities": {
+      "Property": [
+        "id",
+        "title",
+        "location",
+        "type",
+        "price",
+        "status",
+        "photo",
+        "agentId",
+        "views"
+      ],
+      "Lead": [
+        "id",
+        "name",
+        "phone",
+        "email",
+        "source",
+        "budget",
+        "propertyInterestIds",
+        "stage",
+        "ownerId",
+        "lastContactAt",
+        "nextFollowUpAt"
+      ],
+      "Visit": [
+        "id",
+        "leadId",
+        "propertyId",
+        "scheduledAt",
+        "agentId",
+        "status",
+        "notes"
+      ],
+      "Activity": [
+        "id",
+        "date",
+        "type",
+        "description",
+        "status",
+        "entityId"
+      ]
+    },
+    "engagementMetrics": [
+      "Total enquiries",
+      "Active leads",
+      "Response rate",
+      "Site visits booked",
+      "Lead-to-visit conversion",
+      "Deal conversion",
+      "Average response time",
+      "Agent follow-ups due"
+    ],
+    "demoDataRules": [
+      "Show realistic but explicitly illustrative values",
+      "Do not claim mock data is live",
+      "Filters and summaries derive from the same local data collection",
+      "Persist saved property/bookmarks in localStorage if the project permits"
+    ]
+  },
+  "responsive": {
+    "desktop": "Keep exact 12-column / three-section organization above 1280px",
+    "tablet": "At 768–1279px use two columns and put map/activity underneath; preserve readable charts",
+    "mobile": "At 767px and below use one column, horizontal-scroll navigation, stack KPIs and galleries, table sideways scroll or card rows",
+    "minimumCardWidthPx": 210,
+    "avoid": "absolute positioning for whole page; reserve precise absolute or overlap placement only within hero sections"
+  },
+  "requiredQuality": [
+    "Accessible semantic navigation, focus-visible state, aria labels for icon-only buttons",
+    "Real clickable controls and visible feedback",
+    "No broken assets, blank charts, console errors, or horizontal viewport overflow",
+    "Use CSS gradients/shadows sparingly and only where present",
+    "Use skeleton loading where async API is later connected",
+    "Comparison screenshots at 1440x1080 and 736x552 visual ratios",
+    "No screenshot used as the actual dashboard"
+  ],
+  "acceptanceCriteria": [
+    "Both dashboard routes render",
+    "All assigned image roles load from supplied assets",
+    "Hero proportions, card sizing, row ordering, accents, and spacing match corresponding provided images",
+    "Charts use SVG/DOM and functional data",
+    "Search/filter/tab/add/drawer interactions work",
+    "Desktop/tablet/mobile layouts remain usable",
+    "No generic dashboard template substitution"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "skip": [
+    "Aurex Living – Real Estate Dashboard Design by Orbix Studio on Muzli.jpeg",
+    "Raseltate - Dashboard Real Estate Management.jpeg"
+  ],
+  "map": {
+    "Apartment building isolated on a transparent background _ Premium AI-generated PSD.jpeg": "apartment",
+    "Modern house design isolated on a clean white background _ Premium AI-generated PSD.jpeg": "modern-house",
+    "Residential Building on Transparent Background.jpeg": "residential-tower",
+    "🔑 Unlock Your Dream Home_ Top Real Estate Tips.jpeg": "white-villa",
+    "Download free image of Realistic modern cityscape architecture skyscrapers buildings_ by Tanat Chittirungsan about modern building, spaces, buildings, landscape, and city 15386718.jpeg": "skyline-glass",
+    "Download free png of PNG Modern urban skyline with greenery by Tanat Chittirungsan about png, trees, buildings, city, and landscape 15043226.jpeg": "skyline-green",
+    "Download premium png of PNG Exterior of highrise building at dusk architecture tower city by boonpitak tunticharoen about commercial building png, city windows, apartment building transparent, png, and sky 14495050.jpeg": "highrise-dusk"
+  },
+  "upscale2x": [
+    "white-villa",
+    "modern-house"
+  ]
+}
